@@ -23,6 +23,9 @@
             </ion-label>
           </ion-item>
         </ion-list>
+        <div *ngIf="cocktails.length == 0" class="ionic-text-center">
+          Your list is empty.
+        </div>
       </ion-col>
     </ion-row>
   </ion-grid>
