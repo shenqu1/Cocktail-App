@@ -1,5 +1,7 @@
 # Cocktail-App
 
+![Demo](https://github.com/shenqu1/Cocktail-App/blob/main/AppDemo.gif)
+
 This is a cocktail recipe cross platform application building with Ionic5 with Angular, and Cordova SQLite database. It can be run in Android emulator and IOS simulator with Ionic Capacitor. The user can type any key words to search corresponding  cocktail recipe from CocktailAPi, and add to the list to store in local SQLite database. The user can also create new cocktail recipe and save to the list. All recipes in the list can be edited by the user.
 
 Best way to run the app: run with capacitor in an emulartor or ios simulator.
