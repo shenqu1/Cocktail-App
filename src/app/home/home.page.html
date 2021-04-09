@@ -1,20 +1,32 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Blank
+    <ion-buttons slot="end">
+      <ion-button size="small" [routerLink]="['/my-list']">MyList</ion-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">
+      Cocktail App
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeMd="4" offsetMd="4">
+        <ion-searchbar placeholder="Enter Cocktail Name" [(ngModel)]="searchValue" (ionChange)="onInput()">
+        </ion-searchbar>
+        <ion-list *ngIf="!isLoading">
+          <ion-item button *ngFor="let cocktail of cocktails" [routerLink]="['/cocktail', cocktail.idDrink]">
+            <ion-label>
+              {{cocktail.strDrink}}
+            </ion-label>
+          </ion-item>
+          <ion-label *ngIf="!cocktails">No match found</ion-label>
+        </ion-list>
+        <div class="ion-text-center" *ngIf="isLoading">
+          <ion-spinner name="bubbles"></ion-spinner>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

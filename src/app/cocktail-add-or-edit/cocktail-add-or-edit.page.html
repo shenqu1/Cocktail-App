@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ng-container *ngIf="!isLoading">
+        <ion-button size="small" color="primary" [disabled]="!cocktailForm.valid" (click)="addOrEditCocktail()"><ion-icon name="checkmark-outline"></ion-icon></ion-button>
+        <ion-button size="small" color="danger" (click)="cancelAddOrEdit()"><ion-icon name="close-outline"></ion-icon></ion-button>
+      </ng-container>
+    </ion-buttons>
+    <ion-title>{{title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ng-container *ngIf="!isLoading">
+    <form [formGroup]="cocktailForm">
+      <ion-grid>
+        <ion-row>
+          <ion-col sizeMd="6" offsetMd="3">
+            <ion-item>
+              <ion-label position="floating">Cocktail Name</ion-label>
+              <ion-input type="text" formControlName="name" placeholder="Enter cocktail name"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col sizeMd="6" offsetMd="3">
+            <ion-item>
+              <ion-label position="floating">Cocktail Image URL</ion-label>
+              <ion-input type="text" formControlName="img" placeholder="Enter cocktail image URL"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col sizeMd="6" offsetMd="3">
+            <ion-item>
+              <ion-label position="floating">Cocktail Instruction</ion-label>
+              <ion-textarea rows="6" type="text" formControlName="instruction" placeholder="Enter cocktail instruction"></ion-textarea>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ng-container formArrayName="ingredients">
+          <ion-row>
+            <ion-col sizeMd="6" offsetMd="3">
+              <ion-item color="primary">
+                <ion-label>Add Multiple Ingredients:</ion-label>
+                <ion-button color="light" (click)="addIngredient()">Add More</ion-button>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngFor="let ingredient of ingredients.controls; let i=index" [formGroupName]="i">
+            <ion-col size="5" sizeMd="3" offsetMd="3">
+              <ion-item>
+                <ion-label position="floating">Ingredient Name</ion-label>
+                <ion-input type="text" formControlName="ingredientName" placeholder="Enter ingredient Name"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col size="5" sizeMd="2">
+              <ion-item>
+                <ion-label position="floating">Measure</ion-label>
+                <ion-input type="text" formControlName="strMeasure" placeholder="Enter measure"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col size="2" sizeMd="1" class="ion-align-self-center">
+                <ion-button size="small" color="danger" (click)="removeIngredient(i)"><ion-icon name="trash-outline"></ion-icon></ion-button>
+            </ion-col>
+          </ion-row>
+        </ng-container>
+      </ion-grid>
+    </form>
+  </ng-container>
+</ion-content>

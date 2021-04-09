@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ng-container *ngIf="!isLoading">
+        <ion-button size="small" [routerLink]="['/cocktail-add-or-edit', cocktail.id]"><ion-icon name="create-outline"></ion-icon></ion-button>
+        <ion-button size="small" (click)="deleteCocktailById(cocktail.id)"><ion-icon name="trash-outline"></ion-icon></ion-button>
+      </ng-container>
+    </ion-buttons>
+    <ion-title>Cocktail Detail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ng-container *ngIf="!isLoading">
+    <app-detail [cocktail]="cocktail"></app-detail>
+  </ng-container>
+
+  <ion-spinner *ngIf="isLoading"></ion-spinner>
+</ion-content>

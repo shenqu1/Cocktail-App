@@ -1,0 +1,21 @@
+<ion-grid>
+  <ion-row>
+    <ion-col sizeMd="3" offsetMd="4">
+      <ion-card>
+        <img [src]="cocktail.strDrinkThumb"/>
+        <ion-card-header>
+          <ion-card-title>{{cocktail.strDrink}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          {{cocktail.strInstructions}}
+        </ion-card-content>
+        <ion-list>
+          <ion-item *ngFor="let ingredient of cocktail.ingredients">
+            <ion-label>{{ingredient.name}}</ion-label>
+            <ion-note slot="end">{{ingredient.strMeasure}}</ion-note>
+          </ion-item>
+        </ion-list>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>

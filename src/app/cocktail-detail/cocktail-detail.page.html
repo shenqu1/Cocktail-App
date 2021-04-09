@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button size="small" [disabled]="!databaseReady" (click)="addToMyList()" >Add To MyList</ion-button>
+      <ion-button size="small" [routerLink]="['/my-list']">My List</ion-button>
+    </ion-buttons>
+    <ion-title>Detail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <app-detail [cocktail]="cocktail"></app-detail>
+</ion-content>
